@@ -1,0 +1,651 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhiannon & Max — Travel Logistics</title>
+<style>
+  @font-face {
+    font-family: 'KELTN';
+    src: url('KELTN.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'BilboBold';
+    src: url('bilbobold.ttf') format('truetype');
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'KELTN', serif;
+    background: #fff;
+    color: #2a2a2a;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 52px 20px 0;
+    text-align: center;
+  }
+
+  .header-names {
+    font-family: 'BilboBold', serif;
+    font-size: clamp(5.0rem, 16vw, 7.5rem);
+    font-weight: normal;
+    color: #2a2a2a;
+    margin-bottom: 14px;
+  }
+
+  .page-title {
+    font-family: 'BilboBold', serif;
+    font-size: clamp(4.2rem, 13vw, 6.0rem);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    color: #2a2a2a;
+    margin-bottom: 10px;
+  }
+
+  .header-meta {
+    font-family: 'KELTN', serif;
+    font-size: 1.5rem;
+    color: #555;
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+
+  .intro-text {
+    font-family: 'KELTN', serif;
+    font-size: 1.4rem;
+    color: #555;
+    line-height: 2.2;
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .divider {
+    width: 1px;
+    height: 48px;
+    background: #ccc;
+    margin: 36px auto;
+  }
+
+  .contents {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contents a {
+    display: block;
+    font-family: 'KELTN', serif;
+    font-size: 1.3rem;
+    color: #777;
+    text-decoration: none;
+    padding: 8px 0;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+  }
+
+  .contents a:hover {
+    opacity: 0.6;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ── Main ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  /* ── Icon divider ── */
+  .icon-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0 52px;
+  }
+  .icon-divider .line {
+    flex: 1;
+    height: 1px;
+    background: #ccc;
+  }
+  .icon-divider img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    opacity: 0.75;
+    flex-shrink: 0;
+  }
+
+  /* ── Section card ── */
+  .section-card {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    font-family: 'KELTN', serif;
+    font-size: 1.3rem;
+    color: #888;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .section-title {
+    font-family: 'BilboBold', serif;
+    font-size: clamp(4.2rem, 13vw, 6.0rem);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    color: #2a2a2a;
+    margin-bottom: 10px;
+  }
+
+  .section-detail {
+    font-family: 'KELTN', serif;
+    font-size: 1.4rem;
+    color: #777;
+    line-height: 2.2;
+    letter-spacing: 0.05em;
+  }
+
+  .section-detail a,
+  .section-description a,
+  .intro-text a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s;
+  }
+
+  .section-detail a:hover,
+  .section-description a:hover,
+  .intro-text a:hover {
+    opacity: 0.6;
+  }
+
+  .section-description {
+    font-family: 'KELTN', serif;
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 2;
+    letter-spacing: 0.03em;
+    max-width: 750px;
+    margin: 20px auto 0;
+    text-align: center;
+  }
+
+  /* ── Travel Options Tables ── */
+  .travel-group {
+    margin: 32px auto 0;
+    max-width: 780px;
+  }
+
+  .travel-group-title {
+    font-family: 'KELTN', serif;
+    font-size: 1.3rem;
+    color: #2a2a2a;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .travel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 36px;
+    font-family: 'KELTN', serif;
+    font-size: 1.1rem;
+    color: #555;
+  }
+
+  .travel-table th {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1.5px solid #2a2a2a;
+    font-weight: normal;
+    color: #2a2a2a;
+    letter-spacing: 0.04em;
+    font-size: 1.05rem;
+  }
+
+  .travel-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #e8e8e8;
+    line-height: 1.7;
+    vertical-align: top;
+  }
+
+  .travel-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .option-label {
+    white-space: nowrap;
+    color: #2a2a2a;
+    font-style: italic;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.95rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.03em;
+    margin-top: 4px;
+  }
+  .tag.easiest { background: #e8f5e9; color: #4a7a4a; }
+  .tag.funnest { background: #fff3e0; color: #b57a2a; }
+
+  /* ── Parking spots ── */
+  .parking-list {
+    max-width: 680px;
+    margin: 28px auto 0;
+    text-align: left;
+  }
+
+  .parking-spot {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+    font-family: 'KELTN', serif;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  .parking-spot:last-child { border-bottom: none; }
+
+  .parking-number {
+    font-family: 'BilboBold', serif;
+    font-size: 2.2rem;
+    color: #2a2a2a;
+    flex-shrink: 0;
+    line-height: 1;
+    min-width: 28px;
+    text-align: center;
+  }
+
+  .parking-info { flex: 1; }
+
+  .parking-name {
+    color: #2a2a2a;
+    font-size: 1.15rem;
+  }
+
+  /* ── Parking image placeholders ── */
+  .parking-image {
+    width: 100%;
+    max-width: 280px;
+    height: 160px;
+    border: 1.5px dashed #ccc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-family: 'KELTN', serif;
+    font-size: 0.95rem;
+    margin-top: 8px;
+    background: #fafafa;
+  }
+
+  /* ── Taxi links ── */
+  .taxi-links {
+    max-width: 500px;
+    margin: 24px auto 0;
+    text-align: center;
+  }
+
+  .taxi-links a {
+    display: inline-block;
+    font-family: 'KELTN', serif;
+    font-size: 1.2rem;
+    color: #666;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin: 6px 16px;
+    transition: opacity 0.2s;
+  }
+
+  .taxi-links a:hover { opacity: 0.6; }
+
+  /* ── Note box ── */
+  .note-box {
+    max-width: 680px;
+    margin: 28px auto 0;
+    padding: 20px 28px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'KELTN', serif;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.9;
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+    padding: 0 20px 48px;
+    font-family: 'KELTN', serif;
+    font-size: 1.25rem;
+    color: #ccc;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 640px) {
+    main { padding: 0 20px 60px; }
+    .travel-table { font-size: 0.95rem; }
+    .travel-table th, .travel-table td { padding: 8px 8px; }
+    .parking-spot { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="mountains.png" alt="mountains" style="width: min(340px, 80vw); opacity: 0.85; margin-bottom: 36px;">
+
+  <div class="header-names">rhiannon &amp; max</div>
+  <div class="page-title">wedding day travel</div>
+  <div class="header-meta">
+    Sunday, 24th May 2026<br>
+    Torver, the Lake District
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="intro-text">
+    Here's everything you need to know about getting there and back again.
+    <br><br>
+    The wedding ceremony will take place at 11:00 AM at <a href="google.com/maps?cid=4238794934794810953&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYASAA&hl=en&gl=GB&source=embed" target="_blank">St Luke's Church, Torver</a>.
+    <br><br>
+    The reception will take place at <a href="https://www.google.com/maps/place/Sunny+Bank+Farm/@54.3241407,-3.094126,655m/data=!3m1!1e3!4m17!1m7!3m6!1s0x487cbecd520798a1:0x3ad33988fc2b7649!2sSt+Luke's+Church,+Torver!8m2!3d54.339061!4d-3.1017006!16s%2Fm%2F0h7q3fx!3m8!1s0x487cbeb3fdd4eebb:0x581ac3485ee8b0c8!5m2!4m1!1i2!8m2!3d54.323281!4d-3.0942172!16s%2Fg%2F124t314dl?hl=en&entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Sunny Bank Farm, Torver</a>.
+    <br><br>
+  </p>
+</header>
+
+<main>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- WALKING TO THE CHURCH                   -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="icon-divider">
+    <div class="line"></div>
+    <img src="rings.png" alt="">
+    <div class="line"></div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-title">walking there and back again</div>
+    <div class="section-description">
+      If the weather is nice, the groomsmen will walk to and from the church via Torver Common. It's about a 40-minute walk each way across beautiful terrain with views over Coniston Water.
+      <br><br>
+      If you'd like to join us, wear something you can walk up a grassy (possibly muddy) hill in. Rhiannon will be also be walking back from the church to Sunny Bank Farm in her wedding dress and trainers.
+    </div>
+    <img src="wedding-walk.png" style="width: min(680px, 100%); margin: 28px auto 0; display: block; border-radius: 6px; opacity: 0.9;">
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TRAVEL OPTIONS                          -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="icon-divider">
+    <div class="line"></div>
+    <img src="canoe.png" alt="">
+    <div class="line"></div>
+  </div>
+
+  <div class="section-card" id="travel-options">
+    <div class="section-title">travel options</div>
+    <div class="section-description">
+      Your best route depends on where you're staying. Here are our recommendations for each area.
+    </div>
+
+
+       <!-- Onsite -->
+       <div class="travel-group">
+        <div class="travel-group-title">staying onsite</div>
+        <table class="travel-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>To Church</th>
+              <th>To Reception</th>
+              <th>Home</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="option-label">Option 1</span><br><span class="tag funnest">most fun</span></td>
+              <td>Walk to Church</td>
+              <td>Walk to Reception</td>
+              <td>Stumble</td>
+            </tr>
+            <tr>
+              <td><span class="option-label">Option 2</span><br><span class="tag easiest">easiest</span></td>
+              <td>Drive to Church</td>
+              <td>Drive Home</td>
+              <td>Stumble</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="note-box">
+          The walk between the church and the farm is about 40 minutes across beautiful hills with views of the lake. Weather dependent — the wedding party will walk back from the church to the farm.
+        </div>
+      </div>
+    </div>
+
+        <!-- Torver -->
+        <div class="travel-group">
+            <div class="travel-group-title">staying in the Torver area</div>
+            <table class="travel-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>To Church</th>
+                  <th>To Reception</th>
+                  <th>Home</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="option-label">Option 1</span><br><span class="tag funnest">most fun</span></td>
+                  <td>Walk to Church</td>
+                  <td>Walk to Reception</td>
+                  <td>Taxi Home</td>
+                </tr>
+                <tr>
+                  <td><span class="option-label">Option 2</span></td>
+                  <td>Walk to Church</td>
+                  <td>Walk to Reception</td>
+                  <td>Walk Home</td>
+                </tr>
+                <tr>
+                  <td><span class="option-label">Option 3</span><br><span class="tag easiest">easiest</span></td>
+                  <td>Walk to Church</td>
+                  <td>Drive to Reception</td>
+                  <td>Drive Home</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="note-box">
+              The walk home from the Torver area is about 25 minutes along the roadside. If you're walking back at night, please bring something visible and look for a ride share or taxi first.
+            </div>
+          </div>
+
+    <!-- Ambleside -->
+    <div class="travel-group">
+      <div class="travel-group-title">staying in the Ambleside area</div>
+      <table class="travel-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>To Church</th>
+            <th>To Reception</th>
+            <th>Home</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="option-label">Option 1</span><br><span class="tag easiest">easiest</span></td>
+            <td>Drive to Church</td>
+            <td>Drive to Reception</td>
+            <td>Drive Home</td>
+          </tr>
+          <tr>
+            <td><span class="option-label">Option 2</span></td>
+            <td>Drive to Church</td>
+            <td>Walk to Reception<br><em>(with the wedding party)</em></td>
+            <td>Taxi Home</td>
+          </tr>
+          <tr>
+            <td><span class="option-label">Option 3</span><br><span class="tag funnest">most fun</span></td>
+            <td>Drive to Reception</td>
+            <td>Walk with Wedding Party to &amp; from Church</td>
+            <td>Drive Home from Reception</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CHURCH PARKING                          -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="icon-divider">
+    <div class="line"></div>
+    <img src="church.png" alt="">
+    <div class="line"></div>
+  </div>
+
+  <div class="section-card" id="church-parking">
+    <div class="section-title">church parking</div>
+    <div class="section-detail">
+      <a href="https://maps.app.goo.gl/9LGsaCfTPvXfa5Ys8" target="_blank">St Luke's Church, Torver, Coniston LA21 8AZ</a><br>
+      
+    </div>
+    <div class="section-description">
+      There are a few parking options close to the church — please see the map below.
+    </div>
+    <img src="church-parking-master.png" style="width: min(680px, 100%); margin: 28px auto 0; display: block; border-radius: 6px; opacity: 0.9;">
+
+    <div class="parking-list">
+      <div class="parking-spot">
+        <div class="parking-number">1</div>
+        <div class="parking-info">
+          <span class="parking-name"><a href="https://www.google.com/maps/search/54.339436,+-3.101366?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=4a632747-ec42-4208-91cd-359f95111b64" target="_blank">Torver Church Car Park</a></span><br>
+          ~30 vehicles · right at the church
+          <img src="church-parking-1.png" class="parking-image">
+        </div>
+      </div>
+      <div class="parking-spot">
+        <div class="parking-number">2</div>
+        <div class="parking-info">
+          <span class="parking-name"><a href="https://www.google.com/maps/search/54.340997,+-3.101434?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=e3156250-fe0f-49c0-9760-26ab2cbb1370" target="_blank">A593 Turnoff</a></span><br>
+          ~9–10 cars · 1 min walk
+          <img src="church-parking-2.png" class="parking-image">
+        </div>
+      </div>
+      <div class="parking-spot">
+        <div class="parking-number">3</div>
+        <div class="parking-info">
+          <span class="parking-name"><a href="https://www.google.com/maps/search/54.337911,+-3.103252?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=67eae274-6604-4883-939a-8ce7916916ab" target="_blank">Torver Deli</a></span><br>
+          ~13 cars · 1 min walk
+          <img src="church-parking-3.png" class="parking-image">
+        </div>
+      </div>
+      <div class="parking-spot">
+        <div class="parking-number">4</div>
+        <div class="parking-info">
+          <span class="parking-name"><a href="https://www.google.com/maps/search/54.337347,+-3.105756?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=6673692e-9912-4467-a479-3e12f800e91f" target="_blank">Roadside Parking (Pin 4)</a></span><br>
+          ~5 cars · 2 min walk
+          <img src="church-parking-4.png" class="parking-image">
+        </div>
+      </div>
+      <div class="parking-spot">
+        <div class="parking-number">5</div>
+        <div class="parking-info">
+          <span class="parking-name"><a href="https://www.google.com/maps/search/54.337236,+-3.107431?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=1a93b67a-13f7-4e9a-b23a-cd4d5c46b3fa" target="_blank">Roadside Parking (Pin 5)</a></span><br>
+          ~5 cars · 2 min walk
+          <img src="church-parking-4.png" class="parking-image">
+        </div>
+      </div>
+      <div class="parking-spot">
+        <div class="parking-number">6</div>
+        <div class="parking-info">
+          <span class="parking-name"><a href="https://google.com/maps/place/2+A593,+Torver,+Coniston+LA21+8BF/@54.3369578,-3.1047944,248m/data=!3m1!1e3!4m6!3m5!1s0x487cb93301767b8b:0xbc6cacde895e7c9d!8m2!3d54.3367417!4d-3.1049094!16s%2Fg%2F11jz51ts0m?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=484456dd-0826-4e95-a4d1-7e4a84985860" target="_blank">Large Pull-In</a></span><br>
+          ~6 cars · 2 min walk
+          <img src="church-parking-6.png" class="parking-image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- RECEPTION PARKING                       -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="icon-divider">
+    <div class="line"></div>
+    <img src="flutes.png" alt="">
+    <div class="line"></div>
+  </div>
+
+  <div class="section-card" id="reception-parking">
+    <div class="section-title">reception parking</div>
+    <div class="section-detail">
+      <a href="https://maps.app.goo.gl/mtsUropsetMPeihz6" target="_blank">Sunny Bank Farm, Torver, Coniston LA21 8BL</a><br>
+      
+    </div>
+    <div class="section-description">
+      There's a large field with plenty of parking space at the farm. Just follow the signs when you arrive — the entrance is clearly marked whether you're approaching from the north or south.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAXIS / GETTING HOME                    -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="icon-divider">
+    <div class="line"></div>
+    <img src="coffee.png" alt="">
+    <div class="line"></div>
+  </div>
+
+  <div class="section-card" id="taxis">
+    <div class="section-title">taxis &amp; getting home</div>
+    <div class="section-description">
+      There's no Uber around Torver, so if you're planning to get a taxi please book well in advance. We don't have an end-time for the wedding as we're hoping to be the last ones standing, so please book a taxi whenever suits you!
+    </div>
+
+    <div class="note-box">
+      <strong>Camping option</strong> — if you're planning a big night (we hope so!), let us know if you'd like to camp on the land. You'll have access to bathrooms, showers, and kitchens.
+    </div>
+
+    <div style="margin-top: 28px;">
+      <div class="section-label">local taxi companies</div>
+      <div class="taxi-links">
+        <a href="https://www.south-cumbria-taxis.co.uk/" target="_blank">South Cumbria Taxis</a>
+        <a href="https://www.keswicktaxis.co.uk/" target="_blank">Keswick Taxis</a>
+        <a href="https://www.247taxiskendal.co.uk/?utm_source=yell&utm_medium=referral&utm_campaign=yell" target="_blank">Kendal Taxis</a>
+        <a href="https://www.hawksheadtouristinfo.org.uk/?Hawkshead_Taxi" target="_blank">Hawkshead Taxis</a>
+        <a href="https://www.yell.com/biz/amber-taxis-ambleside-ambleside-8784794/" target="_blank">Ambleside Taxis</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Rhiannon &amp; Max · May 2026 · Torver, the Lake District</footer>
+
+</body>
+</html>
